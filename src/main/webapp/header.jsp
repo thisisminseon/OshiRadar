@@ -2,25 +2,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+    href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/myStyle.css">
+    href="${pageContext.request.contextPath}/css/myStyle.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/header.css">
+    href="${pageContext.request.contextPath}/css/header.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/nearshop.css">
+    href="${pageContext.request.contextPath}/css/nearshop.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/nearcafe.css">
+    href="${pageContext.request.contextPath}/css/nearcafe.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/furima.css">
-
+    href="${pageContext.request.contextPath}/css/furima.css">
 
 <header class="site-header">
 
     <!-- Top Area -->
     <div class="site-top">
-
-        <!-- Logo -->
         <div class="site-logo">
             <a href="${pageContext.request.contextPath}/">
                 <img src="${pageContext.request.contextPath}/images/title.png"
@@ -29,7 +26,6 @@
             </a>
         </div>
 
-        <!-- User Area -->
         <div class="site-user">
             <c:choose>
                 <c:when test="${not empty sessionScope.loginUser}">
@@ -42,18 +38,12 @@
                         ログアウト
                     </a>
                 </c:when>
-
                 <c:otherwise>
-                    <a href="${pageContext.request.contextPath}/users/login.do">
-                        ログイン
-                    </a>
-                    <a href="${pageContext.request.contextPath}/users/join.do">
-                        新規入会
-                    </a>
+                    <a href="${pageContext.request.contextPath}/users/login.do">ログイン</a>
+                    <a href="${pageContext.request.contextPath}/users/join.do">新規入会</a>
                 </c:otherwise>
             </c:choose>
         </div>
-
     </div>
 
     <!-- Search Area -->
@@ -83,7 +73,7 @@
             <li><a href="${pageContext.request.contextPath}/">ホーム</a></li>
             <li><a href="${pageContext.request.contextPath}/service/nearshop.jsp">近所のグッズショップ</a></li>
             <li><a href="${pageContext.request.contextPath}/service/nearcafe.jsp">近所の開封スポット</a></li>
-            <li><a href="#">フリマ</a></li>
+            <li><a href="${pageContext.request.contextPath}/furima/list.jsp">フリマ</a></li>
             <li><a href="#">雑談掲示板</a></li>
             <li><a href="#">情報共有</a></li>
         </ul>
@@ -91,7 +81,10 @@
 
 </header>
 
-<!-- Placeholder Script -->
+<!-- ===== JS는 body 하단에서 로드 (중요) ===== -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
 (function () {
     var messages = [

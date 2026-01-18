@@ -98,3 +98,31 @@
     font-size: 12px;
     text-align: center;
 }
+
+/* ===== Conveyor Wrapper ===== */
+.carousel-wrap {
+    overflow: hidden;
+    width: 100%;
+}
+
+/* ===== Conveyor Track ===== */
+.box-table.conveyor {
+    display: flex;
+    width: max-content;
+    animation: conveyorMove 30s linear infinite;
+}
+
+/* 각 카드 간격 유지 */
+.box-table.conveyor .box {
+    flex: 0 0 auto;
+}
+
+/* ===== Animation ===== */
+@keyframes conveyorMove {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}

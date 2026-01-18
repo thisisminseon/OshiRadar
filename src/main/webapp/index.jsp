@@ -74,7 +74,10 @@
         </a>
     </div>
 
-    <div class="box">
+   <div class="box">
+    <a href="${pageContext.request.contextPath}/service/nearcafe.jsp"
+       style="text-decoration: none; color: inherit; display: block;">
+
         <div class="over">
             <img src="${pageContext.request.contextPath}/images/unboxing.png"
                  alt="unboxing-zone">
@@ -84,16 +87,23 @@
             開けるなら一緒が最高！<br>
             ランダムグッズ開封
         </p>
-    </div>
 
-    <div class="box">
+    </a>
+</div>
+
+<div class="box">
+    <a href="${pageContext.request.contextPath}/furima/list.jsp"
+       style="text-decoration: none; color: inherit; display: block;">
+
         <div class="over">
             <img src="${pageContext.request.contextPath}/images/adopt.png"
                  alt="goods-trade">
         </div>
         <h3 class="porttitle">フリマ</h3>
         <p class="txt">推しの卒業は、新たなご縁の始まり</p>
-    </div>
+
+    </a>
+</div>
 
     <div class="box"> 
         <div class="over">
