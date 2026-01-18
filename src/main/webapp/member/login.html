@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ログイン | 推しレーダー</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/myStyle.css">
+</head>
+
+<body>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+
+            <h2 class="text-center mb-4">ログイン</h2>
+
+            <form id="loginForm">
+
+                <table class="tableBorderless" style="margin: 0 auto; width:100%;">
+                    <tbody>
+                        <tr>
+                            <th class="text-right align-middle" style="width:30%;">
+                                ログインID
+                            </th>
+                            <td style="width:70%;">
+                                <input type="text"
+                                       class="form-control"
+                                       id="login_id"
+                                       required>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-right align-middle">
+                                パスワード
+                            </th>
+                            <td>
+                                <input type="password"
+                                       class="form-control"
+                                       id="password"
+                                       required>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th></th>
+                            <td>
+                                <label style="cursor:pointer;">
+                                    <input type="checkbox" id="rememberId">
+                                    IDを記憶する
+                                </label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-red px-4">
+                        ログイン
+                    </button>
+
+                    <button type="button"
+                            class="btn btn-outline-secondary px-4 ml-3"
+                            onclick="alert('null');">
+                        ログインできない方はこちら
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script src="../js/jquery-3.7.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script>
+$(function () {
+
+    const savedId = localStorage.getItem("lastLoginId");
+    const remember = localStorage.getItem("rememberLoginId");
+
+    if (remember === "true" && savedId) {
+        $("#login_id").val(savedId);
+        $("#rememberId").prop("checked", true);
+    }
+
+    $("#loginForm").on("submit", function (e) {
+        e.preventDefault();
+
+        const loginId = $("#login_id").val().trim();
+        const password = $("#password").val();
+
+        if (!loginId || !password) {
+            alert("ログインIDとパスワードを入力してください。");
+            return;
+        }
+
+        if ($("#rememberId").is(":checked")) {
+            localStorage.setItem("lastLoginId", loginId);
+            localStorage.setItem("rememberLoginId", "true");
+        } else {
+            localStorage.removeItem("lastLoginId");
+            localStorage.removeItem("rememberLoginId");
+        }
+
+        alert("null");
+    });
+});
+</script>
+
+</body>
+</html>

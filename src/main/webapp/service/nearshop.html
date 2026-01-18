@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Near Shop</title>
+    <link rel="stylesheet" href="../css/myStyle.css">
+
+    <style>
+        /* ===== Conveyor Wrapper ===== */
+        .carousel-wrap {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+
+        /* ===== Card Line ===== */
+        .box-table {
+            display: flex;
+            gap: 48px;
+            justify-content: center;
+            align-items: stretch;
+            width: max-content;
+            margin: 0 auto;
+            animation: conveyor 28s linear infinite;
+        }
+
+        /* ===== Individual Card ===== */
+        .box {
+            width: 150%;
+            max-width: 420px;
+            background: #fff;
+            border-radius: 18px;
+            padding: 24px 20px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            flex-shrink: 0;
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .box:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 32px rgba(0,0,0,0.15);
+        }
+
+        .box a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .over {
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .over img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        @keyframes conveyor {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="sub-container">
+    <div class="writebox">
+
+        <h2 class="mb-4">どんなグッズショップを探しますか？</h2>
+
+        <div class="carousel-wrap">
+            <div class="box-table conveyor">
+
+                <div class="box">
+                    <a href="nearshop_list.html?category=title">
+                        <div class="over">
+                            <img src="../images/title.png" alt="title-based">
+                        </div>
+                        <h3 class="porttitle">作品で探す</h3>
+                        <p class="txt">作品・ジャンル別に探したい方へ</p>
+                    </a>
+                </div>
+
+                <div class="box">
+                    <a href="nearshop_list.html?category=trend">
+                        <div class="over">
+                            <img src="../images/trending.png" alt="trending-shop">
+                        </div>
+                        <h3 class="porttitle">最近話題</h3>
+                        <p class="txt">SNSや口コミで注目のショップ</p>
+                    </a>
+                </div>
+
+                <div class="box">
+                    <a href="nearshop_list.html?category=figure">
+                        <div class="over">
+                            <img src="../images/figure.png" alt="figure-shop">
+                        </div>
+                        <h3 class="porttitle">フィギュア</h3>
+                        <p class="txt">スケール・可動フィギュアが充実</p>
+                    </a>
+                </div>
+
+                <div class="box">
+                    <a href="nearshop_list.html?category=female">
+                        <div class="over">
+                            <img src="../images/female.png" alt="female-goods">
+                        </div>
+                        <h3 class="porttitle">女性向け</h3>
+                        <p class="txt">アクスタ・可愛い系グッズ中心</p>
+                    </a>
+                </div>
+
+                <div class="box">
+                    <a href="nearshop_list.html?category=male">
+                        <div class="over">
+                            <img src="../images/jump.png" alt="male-goods">
+                        </div>
+                        <h3 class="porttitle">男性向け</h3>
+                        <p class="txt">ジャンプ系・王道バトル作品</p>
+                    </a>
+                </div>
+
+                <div class="box">
+                    <a href="nearshop_list.html?category=etc">
+                        <div class="over">
+                            <img src="../images/hidden.png" alt="etc-shop">
+                        </div>
+                        <h3 class="porttitle">その他</h3>
+                        <p class="txt">個性派・隠れ家的ショップ</p>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    const conveyor = document.querySelector('.box-table');
+
+    conveyor.addEventListener('mouseenter', () => {
+        conveyor.style.animationPlayState = 'paused';
+    });
+
+    conveyor.addEventListener('mouseleave', () => {
+        conveyor.style.animationPlayState = 'running';
+    });
+</script>
+
+</body>
+</html>

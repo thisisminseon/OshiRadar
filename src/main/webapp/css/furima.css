@@ -1,0 +1,78 @@
+/* ----- productlist.jsp ----- */
+
+.container {
+    max-width: 1200px;
+}
+
+.container > .d-flex {
+    font-size: 14px;
+    color: #333;
+}
+
+.container select.form-control-sm {
+    width: 130px;
+    height: 32px;
+    font-size: 13px;
+}
+
+.furima-card {
+    border: none;
+    border-radius: 0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.furima-card:hover {
+    transform: translateY(-3px);
+}
+
+.furima-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    background-color: #f5f5f5;
+}
+
+.furima-card .card-body {
+    padding: 10px 4px 0;
+}
+
+.furima-title {
+    font-size: 13px;
+    color: #222;
+    line-height: 1.4;
+    height: 36px;
+    overflow: hidden;
+}
+
+.furima-price {
+    font-size: 15px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 4px;
+}
+
+.furima-time {
+    font-size: 11px;
+    margin-top: 2px;
+    color: #888;
+}
+
+.row {
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+.row > [class^="col-"] {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.text-muted {
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .furima-card img {
+        height: 180px;
+    }
+}

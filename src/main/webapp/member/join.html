@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/myStyle.css">
+
+<title>新規会員登録 | 推しレーダー</title>
+</head>
+
+<body>
+
+	<header class="site-header">
+		<div class="site-top">
+			<div class="site-logo">
+				<a href="index.html"> <img src="images/title.png"
+					alt="logo-title-image" class="logo-image">
+				</a>
+			</div>
+
+			<div class="site-user">
+				<a href="login.html">ログイン</a> <a href="join.html">新規入会</a>
+			</div>
+		</div>
+
+		<nav class="site-nav">
+			<ul class="nav-menu">
+				<li><a href="index.html">ホーム</a></li>
+				<li><a href="#">近所のグッズショップ</a></li>
+				<li><a href="#">近所の開封スポット</a></li>
+				<li><a href="#">フリマ</a></li>
+				<li><a href="#">雑談掲示板</a></li>
+				<li><a href="#">情報共有</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<div class="subvisual">
+		<div class="sub-inner">
+			<div class="visual-title">
+				<h2>新規会員登録</h2>
+				<p>推し活をもっと楽しく、もっと便利に</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="sub-container">
+		<div class="writebox">
+
+			<form method="post" action="/join">
+
+				<table class="border-table">
+
+					<tr>
+						<th>ログインID</th>
+						<td><input type="text" name="login_id" required
+							maxlength="30"></td>
+					</tr>
+
+					<tr>
+						<th>パスワード</th>
+						<td><input type="password" name="password" required>
+						</td>
+					</tr>
+
+					<tr>
+						<th>パスワード確認</th>
+						<td><input type="password" name="password_check" required>
+						</td>
+					</tr>
+
+					<tr>
+						<th>氏名</th>
+						<td><input type="text" name="user_name" required
+							maxlength="50"></td>
+					</tr>
+
+					<tr>
+						<th>ニックネーム</th>
+						<td><input type="text" name="nickname" required
+							maxlength="40"></td>
+					</tr>
+
+					<tr>
+						<th>生年月日</th>
+						<td><input type="date" name="birth_date" required></td>
+					</tr>
+
+					<tr>
+						<th>性別</th>
+						<td><label> <input type="radio" name="gender"
+								value="M" required> 男
+						</label> &nbsp;&nbsp; <label> <input type="radio" name="gender"
+								value="F"> 女
+						</label></td>
+					</tr>
+
+					<tr>
+						<th>電話番号</th>
+						<td><input type="text" name="phone_1" required
+							placeholder="010-1234-5678"></td>
+					</tr>
+
+					<tr>
+						<th>予備連絡先</th>
+						<td><input type="text" name="phone_2" placeholder="任意">
+						</td>
+					</tr>
+
+					<tr>
+						<th>住所</th>
+						<td><input type="text" name="address" required
+							maxlength="200"></td>
+					</tr>
+
+					<tr>
+						<td colspan="2" style="text-align: center;">
+							<button type="submit" class="submit">登録する</button>
+							<button type="reset" class="reset">リセット</button>
+							<button type="button" class="list"
+								onclick="location.href='index.html'">戻る</button>
+						</td>
+					</tr>
+
+				</table>
+
+			</form>
+
+		</div>
+	</div>
+
+	<footer class="site-footer">
+		<div class="footer-inner text-center">
+			<p>© 推しレーダー. All Rights Reserved.</p>
+		</div>
+	</footer>
+
+	<script src="js/jquery-3.7.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>
