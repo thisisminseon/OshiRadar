@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class FurimaDto {
 
@@ -10,8 +10,8 @@ public class FurimaDto {
     private String description;
     private int price;
     private String imagePath;
+    private String status;
     private Date createdAt;
-    private char status;
 
     public int getPostId() {
         return postId;
@@ -55,17 +55,17 @@ public class FurimaDto {
         this.imagePath = imagePath;
     }
 
+    public String getStatus() {
+        return status;
+    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public Date getCreatedAt() {
         return createdAt;
     }
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
-    }
-
-    public char getStatus() {
-        return status;
-    }
-    public void setStatus(char status) {
-        this.status = status;
     }
 }

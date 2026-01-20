@@ -23,7 +23,7 @@
 
             <h2 class="text-center mb-5">ログイン</h2>
 
-            <!-- Login error message from Controller -->
+            <!-- login error -->
             <c:if test="${not empty loginError}">
                 <div class="alert alert-danger text-center">
                     ${loginError}
@@ -33,7 +33,7 @@
             <!-- LOGIN FORM -->
             <form id="loginForm"
                   method="post"
-                  action="${pageContext.request.contextPath}/users/login.do">
+                  action="${pageContext.request.contextPath}/users/loginOk.do">
 
                 <table class="tableBorderless login-table mx-auto">
                     <tbody>
@@ -42,7 +42,6 @@
                             <td class="login-input">
                                 <input type="text"
                                        class="form-control"
-                                       id="login_id"
                                        name="login_id"
                                        required>
                             </td>
@@ -53,7 +52,6 @@
                             <td class="login-input">
                                 <input type="password"
                                        class="form-control"
-                                       id="password"
                                        name="password"
                                        required>
                             </td>
@@ -99,13 +97,13 @@ $(function () {
     var remember = localStorage.getItem("rememberLoginId");
 
     if (remember === "true" && savedId) {
-        $("#login_id").val(savedId);
+        $("input[name='login_id']").val(savedId);
         $("#rememberId").prop("checked", true);
     }
 
     $("#loginForm").on("submit", function () {
 
-        var loginId = $("#login_id").val().trim();
+        var loginId = $("input[name='login_id']").val().trim();
 
         if ($("#rememberId").is(":checked")) {
             localStorage.setItem("lastLoginId", loginId);

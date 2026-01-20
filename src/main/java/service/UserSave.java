@@ -61,6 +61,6 @@ public class UserSave implements Command {
             return;
         }
 
-        response.sendRedirect(request.getContextPath() + "/");
+        response.sendRedirect(request.getContextPath() + "/users/login.do");
     }
 }

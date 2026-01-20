@@ -33,7 +33,7 @@ public class UserDao {
         } finally {
             close(rs, pstmt, conn);
         }
-        return -1;
+        return 0;
     }
 
     // 회원가입
@@ -132,55 +132,4 @@ public class UserDao {
         }
     }
     
-    public UserDto login(String loginId, String password) {
-
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-
-        String sql =
-            "SELECT user_id, login_id, user_name, birth_date, nickname, password, " +
-            "phone_1, phone_2, gender, address, created_at, updated_at " +
-            "FROM users WHERE login_id = ?";
-
-        try {
-            conn = DBManager.getInstance();
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, loginId);
-            rs = pstmt.executeQuery();
-
-            if (rs.next()) {
-
-                String dbPassword = rs.getString("password");
-
-                
-                if (!PasswordBcrypt.checkPassword(password, dbPassword)) {
-                    return null;
-                }
-
-                UserDto dto = new UserDto();
-                dto.setUserId(rs.getInt("user_id"));
-                dto.setLoginId(rs.getString("login_id"));
-                dto.setUserName(rs.getString("user_name"));
-                dto.setBirthDate(rs.getDate("birth_date"));
-                dto.setNickname(rs.getString("nickname"));
-                dto.setPassword(dbPassword);
-                dto.setPhone1(rs.getString("phone_1"));
-                dto.setPhone2(rs.getString("phone_2"));
-                dto.setGender(rs.getString("gender").charAt(0));
-                dto.setAddress(rs.getString("address"));
-                dto.setCreatedAt(rs.getDate("created_at"));
-                dto.setUpdatedAt(rs.getDate("updated_at"));
-
-                return dto;
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            close(rs, pstmt, conn);
-        }
-
-        return null;
-    }
 }

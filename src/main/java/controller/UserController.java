@@ -1,25 +1,30 @@
 package controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.UserDao;
-import model.UserDto;
+import service.UserLogin;
+import service.UserSave;
+import service.UserLogout;
 
 @WebServlet("/users/*")
 public class UserController extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doAction(request, response);
     }
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doAction(request, response);
@@ -32,95 +37,65 @@ public class UserController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         String uri = request.getPathInfo();
-        if (uri == null) uri = "";
+        if (uri == null) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
 
         String page = null;
-        UserDao dao = new UserDao();
-        HttpSession session = request.getSession();
 
         switch (uri) {
 
+        // login page
+        case "/login.do":
+            page = "/member/login.jsp";
+            break;
+
+        // login process
+        case "/loginOk.do":
+            new UserLogin().doCommand(request, response);
+            return;
+
+        // join page
         case "/join.do":
             page = "/member/join.jsp";
             break;
 
-        case "/joinOk.do": {
-            UserDto joinDto = new UserDto();
-
-            joinDto.setLoginId(request.getParameter("login_id"));
-            joinDto.setUserName(request.getParameter("user_name"));
-            joinDto.setNickname(request.getParameter("nickname"));
-            joinDto.setPhone1(request.getParameter("phone_1"));
-            joinDto.setPhone2(request.getParameter("phone_2"));
-            joinDto.setAddress(request.getParameter("address"));
-            joinDto.setPassword(request.getParameter("password"));
-
-            String birth = request.getParameter("birth_date");
-            joinDto.setBirthDate(java.sql.Date.valueOf(birth));
-
-            String gender = request.getParameter("gender");
-            joinDto.setGender(gender.charAt(0));
-
-            UserDto savedUser = dao.userSave(joinDto);
-
-            if (savedUser == null) {
-                response.sendRedirect(request.getContextPath() + "/users/join.do");
-                return;
-            }
-
-            response.sendRedirect(request.getContextPath() + "/users/login.do");
-            return;
-        }
-
-        case "/login.do":
-
-            // GET : 로그인 페이지
-            if ("GET".equalsIgnoreCase(request.getMethod())) {
-                if (session.getAttribute("loginUser") != null) {
-                    response.sendRedirect(request.getContextPath() + "/main");
-                    return;
-                }
-                page = "/member/login.jsp";
-                break;
-            }
-
-            // POST : 로그인 처리
-            String loginId = request.getParameter("login_id");
-            String password = request.getParameter("password");
-
-            UserDto loginUser = dao.findByLoginId(loginId);
-
-            if (loginUser == null || !loginUser.getPassword().equals(password)) {
-                request.setAttribute("loginError", "아이디 또는 비밀번호가 올바르지 않습니다.");
-                page = "/member/login.jsp";
-                break;
-            }
-
-            session.setAttribute("loginUser", loginUser);
-            response.sendRedirect(request.getContextPath() + "/main");
+        // join process
+        case "/joinOk.do":
+            new UserSave().doCommand(request, response);
             return;
 
+        // ID duplicate check (AJAX)
         case "/idCheck.do":
             response.setContentType("text/plain; charset=UTF-8");
 
-            String checkId = request.getParameter("login_id");
-            if (checkId == null || checkId.trim().isEmpty()) {
+            String loginId = request.getParameter("login_id");
+            if (loginId == null || loginId.trim().isEmpty()) {
                 response.getWriter().print("OK");
                 return;
             }
 
-            int cnt = dao.isIdExist(checkId);
+            int cnt = new UserDao().isIdExist(loginId);
             response.getWriter().print(cnt > 0 ? "EXISTS" : "OK");
             return;
 
+        // logout
         case "/logout.do":
-            session.invalidate();
-            response.sendRedirect(request.getContextPath() + "/main");
+            new UserLogout().doCommand(request, response);
+            return;
+
+        // help login page
+        case "/helpLogin.do":
+            page = "/member/helpLogin.jsp";
+            break;
+
+        default:
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
 
-        if (page != null) {
-            request.getRequestDispatcher(page).forward(request, response);
-        }
+        // forward to jsp
+        request.getRequestDispatcher(page).forward(request, response);
     }
 }

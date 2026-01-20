@@ -1,156 +1,71 @@
-/* ===== フリマ 전체 컨테이너 ===== */
-.furima-container {
-    max-width: 1200px;
-    margin: 60px auto;
-    padding: 0 20px;
+/* ----- list.jsp -----*/
+
+/* Layout */
+.furima-list-wrap {
+    margin-top: 40px;
+    margin-bottom: 60px;
 }
 
-/* =====================================================
-   Furima Visual (index mainvisual과 100% 동일 디자인)
-   ===================================================== */
-
-.furima-visual {
-    position: relative;
-    height: 500px;
-    overflow: hidden;
-}
-
-/* Carousel 이미지 */
-.furima-visual .carousel-item img {
-    height: 610px;
-    object-fit: cover;
-}
-
-/* 텍스트 오버레이 영역 */
-.furima-visual-inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    pointer-events: none;
-}
-
-/* 텍스트 위치 */
-.furima-visual-title {
-    position: absolute;
-    top: 40%;
-    left: 18%;
-}
-
-/* 타이틀 */
-.furima-visual-title h2 {
-    font-size: 60px;
-    color: #fff;
-    font-weight: 700;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-}
-
-/* 서브 문구 */
-.furima-visual-title p {
-    margin-top: 12px;
-    background: rgba(255, 255, 255, 0.9);
-    color: #212121;
-    display: inline-block;
-    padding: 6px 14px;
-    font-size: 14px;
-}
-
-/* ===== Responsive (index와 동일) ===== */
-
-@media (max-width: 1200px) {
-    .furima-visual-inner {
-        width: 100%;
-        padding: 0 10px;
-    }
-
-    .furima-visual-title h2 {
-        font-size: 42px;
-    }
-}
-
-@media (max-width: 600px) {
-    .furima-visual-title h2 {
-        font-size: 42px;
-    }
-}
-
-/* =====================================================
-   상품 리스트
-   ===================================================== */
-
-.furima-item {
-    display: flex;
-    gap: 24px;
-    padding: 24px 0;
-    border-bottom: 1px solid #e5e5e5;
-}
-
-/* 이미지 영역 */
-.furima-image {
-    width: 220px;
-    height: 220px;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-
-.furima-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* 텍스트 영역 */
-.furima-text {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-/* 번호 / 가격 */
-.furima-meta {
-    font-size: 14px;
-    color: #777;
-    margin-bottom: 8px;
-}
-
-/* 제목 */
+/* Title */
 .furima-title {
-    font-size: 20px;
-    font-weight: 600;
-    color: #111;
-    margin: 4px 0 10px;
+    font-weight: bold;
+    color: #c82333;
 }
 
-/* 설명 */
-.furima-desc {
-    font-size: 15px;
-    color: #555;
-    line-height: 1.6;
+/* Item Box */
+.furima-item {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 20px 0;
+    align-items: center;
 }
 
-/* =====================================================
-   하단 버튼
-   ===================================================== */
-
-.furima-page {
-    display: flex;
-    justify-content: flex-end;
-    margin: 40px 0 80px;
+/* Thumbnail */
+.furima-thumb {
+    max-height: 120px;
+    object-fit: cover;
 }
 
-.furima-writer a {
-    padding: 12px 24px;
-    background: #111;
-    color: #fff;
-    font-size: 15px;
-    border-radius: 6px;
+/* Item Title */
+.furima-item-title a {
+    color: #222;
+    font-weight: bold;
     text-decoration: none;
 }
 
-.furima-writer a:hover {
-    background: #333;
+.furima-item-title a:hover {
+    color: #c82333;
+    text-decoration: underline;
+}
+
+/* Description */
+.furima-item-desc {
+    color: #666;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Price */
+.furima-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #c82333;
+}
+
+/* Pagination */
+.furima-pagination {
+    margin-top: 40px;
+}
+
+.page-item.active .page-link {
+    background-color: #c82333;
+    border-color: #c82333;
+}
+
+.page-link {
+    color: #c82333;
+}
+
+.page-link:hover {
+    color: #fff;
+    background-color: #c82333;
 }

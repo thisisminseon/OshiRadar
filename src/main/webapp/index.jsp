@@ -92,7 +92,7 @@
 </div>
 
 <div class="box">
-    <a href="${pageContext.request.contextPath}/furima/list.jsp"
+    <a href="${pageContext.request.contextPath}/furima/list.do"
        style="text-decoration: none; color: inherit; display: block;">
 
         <div class="over">
