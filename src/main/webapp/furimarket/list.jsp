@@ -1,70 +1,81 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%@ include file="../header.jsp" %>
+<%@ include file="../header.jsp"%>
+
+<c:if test="${param.msg == 'deleted'}">
+    <script>
+        alert("正常に削除されました。");
+    </script>
+</c:if>
 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>FURIMARKET | LIST</title>
+<meta charset="UTF-8">
 
-    <!-- Bootstrap 4.6 -->
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+    href="${pageContext.request.contextPath}/css/furima.css">
 
-    <!-- Furima CSS -->
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/css/furima.css">
-
-    <script>
-        // Guest write button alert
-        function checkLogin(isLogin) {
-            if (!isLogin) {
-                alert("ログイン後に利用できます。");
-                return false;
-            }
-            return true;
+<script>
+    function checkLogin(isLogin) {
+        if (!isLogin) {
+            alert("ログイン後に利用できます。");
+            return false;
         }
-    </script>
+        return true;
+    }
+</script>
+
+
 </head>
 
 <body>
 
 <div class="container furima-list-wrap">
 
-    <!-- List Header -->
+    <!-- Header -->
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h3 class="furima-title">商品一覧</h3>
-
-        <a href="${pageContext.request.contextPath}/furimarket/write.do"
+        <a href="${pageContext.request.contextPath}/furima/write.do"
            class="btn btn-danger"
            onclick="return checkLogin(${not empty sessionScope.loginUser});">
             出品する
         </a>
+
+        <form method="get"
+              action="${pageContext.request.contextPath}/furima/list.do"
+              class="form-inline">
+            <input type="text"
+                   name="keyword"
+                   class="form-control mr-2"
+                   placeholder="商品名で検索"
+                   value="${param.keyword}">
+            <button type="submit" class="btn btn-outline-danger">検索</button>
+        </form>
     </div>
 
     <!-- Product List -->
     <c:forEach var="dto" items="${list}">
-        <div class="furima-item row">
+        <div class="furima-item row mb-3">
 
             <!-- Thumbnail -->
-            <div class="col-md-2 text-center">
-                <img src="${dto.imagePath}"
-                     class="img-fluid furima-thumb"
-                     alt="product">
-            </div>
+				<div class="col-md-2 text-center">
+					<img src="${pageContext.request.contextPath}${dto.imagePath}"
+						class="img-fluid furima-thumb" alt="product">
+				</div>
 
-            <!-- Content -->
+				<!-- Content -->
             <div class="col-md-7">
                 <h5 class="furima-item-title">
-                    <a href="${pageContext.request.contextPath}/furimarket/detail.do?id=${dto.id}">
+                    <a href="${pageContext.request.contextPath}/furima/detail.do?postId=${dto.postId}">
                         ${dto.title}
                     </a>
                 </h5>
                 <p class="furima-item-desc">
-                    ${dto.content}
+                    ${dto.description}
                 </p>
             </div>
 
@@ -73,7 +84,7 @@
                 <div class="furima-price">
                     ¥ ${dto.price}
                 </div>
-                <a href="${pageContext.request.contextPath}/furimarket/detail.do?id=${dto.id}"
+                <a href="${pageContext.request.contextPath}/furima/detail.do?postId=${dto.postId}"
                    class="btn btn-outline-danger btn-sm mt-2">
                     もっと見る
                 </a>
@@ -88,7 +99,7 @@
             <c:forEach begin="1" end="${totalPage}" var="p">
                 <li class="page-item ${p == page ? 'active' : ''}">
                     <a class="page-link"
-                       href="${pageContext.request.contextPath}/furimarket/list.do?page=${p}">
+                       href="${pageContext.request.contextPath}/furima/list.do?page=${p}&keyword=${param.keyword}">
                         ${p}
                     </a>
                 </li>
@@ -101,4 +112,4 @@
 </body>
 </html>
 
-<%@ include file="../footer.jsp" %>
+<%@ include file="../footer.jsp"%>

@@ -1,8 +1,31 @@
 <Context>
+
     <Resources className="org.apache.catalina.webresources.StandardRoot">
+    
         <PreResources
             className="org.apache.catalina.webresources.DirResourceSet"
             base="/Users/parkminseon/Desktop/shop"
             webAppMount="/myProject" />
+            
+             <!-- upload image resources -->
+        <PreResources
+            className="org.apache.catalina.webresources.DirResourceSet"
+            base="/Users/parkminseon/Desktop/upload"
+            webAppMount="/upload" />
     </Resources>
+
+    <!-- JNDI DataSource -->
+    <Resource
+        name="jdbc/oracle"
+        auth="Container"
+        type="javax.sql.DataSource"
+        driverClassName="oracle.jdbc.OracleDriver"
+        url="jdbc:oracle:thin:@localhost:1521:XE"
+        username="jsl26"
+        password="1234"
+        maxTotal="20"
+        maxIdle="10"
+        maxWaitMillis="-1"
+    />
+
 </Context>

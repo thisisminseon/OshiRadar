@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<%@ include file="header.jsp" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="pageTitle" value="推しレーダー :: 隠れていた私の推しを見つけて！" />
+<%@ include file="/header.jsp" %>
 
 <!-- MAIN VISUAL -->
 <div id="mainVisualCarousel"
@@ -105,14 +105,21 @@
     </a>
 </div>
 
-    <div class="box"> 
+<div class="box">
+    <a href="${pageContext.request.contextPath}/board/list.do"
+       style="text-decoration: none; color: inherit; display: block;">
+
         <div class="over">
-            <img src="${pageContext.request.contextPath}/images/information.png"
-                 alt="information-board">
+            <img src="${pageContext.request.contextPath}/images/free_board.png"
+                 alt="free-board">
         </div>
-        <h3 class="porttitle">情報共有</h3>
-        <p class="txt">推し活は情報戦！</p>
-    </div>
+        <h3 class="porttitle">雑談掲示板</h3>
+        <p class="txt">
+            ここでフリートーキングしながら<br>遊ぼう！
+        </p>
+
+    </a>
+</div>
 
 </div>
 

@@ -1,71 +1,197 @@
-/* ----- list.jsp -----*/
+/* ================================
+   Furima List Page
+================================ */
 
-/* Layout */
+body {
+    background-color: #f4f4f4;
+}
+
 .furima-list-wrap {
-    margin-top: 40px;
-    margin-bottom: 60px;
+    max-width: 1100px;
+    margin: 60px auto 100px;
+    padding: 0 20px;
+    background-color: transparent;
 }
 
-/* Title */
 .furima-title {
-    font-weight: bold;
-    color: #c82333;
+    font-size: 28px;
+    font-weight: 700;
+    color: #b52a37;
+    margin-bottom: 32px;
 }
 
-/* Item Box */
 .furima-item {
-    border-bottom: 1px solid #e5e5e5;
-    padding: 20px 0;
+    display: flex;
     align-items: center;
+    padding: 22px 20px;
+    margin-bottom: 18px;
+
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 }
 
-/* Thumbnail */
 .furima-thumb {
-    max-height: 120px;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
+    border-radius: 12px;
+    background-color: #f4f4f4;
 }
 
-/* Item Title */
+.furima-item-info {
+    padding-left: 20px;
+    flex: 1;
+}
+
 .furima-item-title a {
+    font-size: 18px;
+    font-weight: 700;
     color: #222;
-    font-weight: bold;
     text-decoration: none;
 }
 
 .furima-item-title a:hover {
-    color: #c82333;
+    color: #b52a37;
     text-decoration: underline;
 }
 
-/* Description */
 .furima-item-desc {
-    color: #666;
+    margin-top: 8px;
     font-size: 14px;
-    margin-top: 5px;
+    color: #666;
+    line-height: 1.5;
 }
 
-/* Price */
 .furima-price {
-    font-size: 20px;
-    font-weight: bold;
-    color: #c82333;
+    font-size: 22px;
+    font-weight: 700;
+    color: #b52a37;
+    text-align: right;
+    min-width: 120px;
 }
 
-/* Pagination */
 .furima-pagination {
-    margin-top: 40px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
 }
 
 .page-item.active .page-link {
-    background-color: #c82333;
-    border-color: #c82333;
+    background-color: #b52a37;
+    border-color: #b52a37;
+    color: #fff;
 }
 
 .page-link {
-    color: #c82333;
+    color: #b52a37;
+    border-radius: 6px;
 }
 
 .page-link:hover {
+    background-color: #b52a37;
     color: #fff;
-    background-color: #c82333;
+}
+
+/* furima - detail.jsp */
+
+.furima-detail-wrap {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 40px 48px;
+    background-color: #f4f4f4;
+    border-radius: 18px;
+}
+
+.furima-detail-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.furima-divider {
+    border: none;
+    height: 1px;
+    background-color: red;
+    margin: 32px 0;
+}
+
+.furima-detail-image-wrap {
+    position: relative;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.furima-detail-image {
+    max-width: 80%;
+    max-height: 520px;
+    object-fit: contain;
+
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+.status-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    padding: 6px 14px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.status-badge.reserve {
+    background-color: #ff9800;
+}
+
+.status-badge.soldout {
+    background-color: #9e9e9e;
+}
+
+.furima-detail-price {
+    font-size: 28px;
+    font-weight: 700;
+    color: red;
+    margin: 12px 0;
+}
+
+.furima-detail-desc {
+    line-height: 1.8;
+}
+
+.furima-detail-desc h4 {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.furima-detail-desc p {
+    font-size: 16px;
+    color: #333;
+}
+
+.furima-detail-meta {
+    display: flex;
+    gap: 24px;
+    font-size: 14px;
+    color: #666;
+}
+
+.furima-detail-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.furima-detail-actions a {
+    padding: 8px 18px;
+}
+
+.owner-actions a {
+    margin-left: 12px;
 }

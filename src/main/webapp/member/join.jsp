@@ -1,14 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../header.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<!-- ================= Main Visual ================= -->
+<c:set var="pageTitle" value="推しレーダー :: 隠れていた私の推しを見つけて！" />
+<%@ include file="/header.jsp" %>
+
+<!-- ================= MAIN VISUAL ================= -->
 <div id="mainVisualCarousel"
      class="carousel slide carousel-fade mainvisual"
      data-ride="carousel"
      data-interval="1900"
      data-pause="false">
 
+    <!-- Carousel image -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="${pageContext.request.contextPath}/images/joinwelcome.png"
+                 class="d-block w-100" alt="join">
+        </div>
+    </div>
+
+    <!-- Overlay text -->
     <div class="visual-inner">
         <div class="visual-title">
             <h2>新規会員登録</h2>
@@ -16,12 +28,6 @@
         </div>
     </div>
 
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="${pageContext.request.contextPath}/images/login_2.jpg"
-                 class="d-block w-100" alt="join">
-        </div>
-    </div>
 </div>
 
 <!-- ================= Join Form ================= -->

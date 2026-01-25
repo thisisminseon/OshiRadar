@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="pageTitle" value="推しレーダー :: 今、私の周りには？" />
 <%@ include file="../header.jsp"%>
 
 <!-- ================= Main Visual Carousel ================= -->
@@ -22,29 +23,10 @@
     <div class="carousel-inner">
 
         <div class="carousel-item active">
-            <img src="${pageContext.request.contextPath}/images/visual_15.png"
-                 class="d-block w-100" alt="visual1">
+            <img src="${pageContext.request.contextPath}/images/realrealshop.001.png"
+                 class="d-block w-100" alt="shopCarousel">
         </div>
 
-        <div class="carousel-item">
-            <img src="${pageContext.request.contextPath}/images/visual_12.png"
-                 class="d-block w-100" alt="visual2">
-        </div>
-
-        <div class="carousel-item">
-            <img src="${pageContext.request.contextPath}/images/visual_10.png"
-                 class="d-block w-100" alt="visual3">
-        </div>
-
-        <div class="carousel-item">
-            <img src="${pageContext.request.contextPath}/images/visual_13.png"
-                 class="d-block w-100" alt="visual4">
-        </div>
-
-        <div class="carousel-item">
-            <img src="${pageContext.request.contextPath}/images/visual_14.png"
-                 class="d-block w-100" alt="visual5">
-        </div>
 
     </div>
 </div>
