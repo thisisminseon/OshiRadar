@@ -1,9 +1,5 @@
 @charset "UTF-8";
 
-/* =========================================================
-   Layout
-========================================================= */
-
 /* Move main content upward */
 .sub-container {
     padding: 1px 0;
@@ -11,16 +7,14 @@
     top: -150px;
 }
 
-/* =========================================================
-   Carousel (Conveyor)
-========================================================= */
+/* Carousel */
 
 /* Visible area of carousel */
 .carousel-wrap {
 	transform: translateX(-25%);
     width: 200%;
-    max-width: 1900px;   /* ← 원하는 만큼 키우세요 (1600~2000px) */
-    margin: 0 auto;      /* ← 핵심: 항상 가운데 기준 */
+    max-width: 1900px;   
+    margin: 0 auto;      
     overflow: hidden;
 }
 
@@ -30,12 +24,12 @@
     gap: 32px;
     width: max-content;
     animation: conveyor 20s linear infinite;
-    transform: translateX(0); /* ensure no offset */
+    transform: translateX(0); 
 }
 
 /* Individual card */
 .carousel-wrap .box {
-    width: 360px;        /* card size */
+    width: 360px;        
     background: #fff;
     border-radius: 15px;
     padding: 24px 20px;
@@ -71,10 +65,6 @@
     object-fit: contain;
 }
 
-/* =========================================================
-   Category Menu
-========================================================= */
-
 .category-menu {
     max-width: 1200px;
     margin: 60px auto 0;
@@ -99,10 +89,6 @@
     color: #fff;
     transform: translateY(-4px);
 }
-
-/* =========================================================
-   Animation
-========================================================= */
 
 @keyframes conveyor {
     0% {
